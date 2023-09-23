@@ -8,6 +8,7 @@ import {
     updateAddressValidation
 } from "../validation/address-validation.js";
 
+//test
 const checkContactMustExists = async (user, contactId) => {
     contactId = validate(getContactValidation, contactId);
 
