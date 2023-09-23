@@ -1,0 +1,81 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["referentialActions"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  username String    @id @db.VarChar(100)
+  password String    @db.VarChar(100)
+  name     String    @db.VarChar(100)
+  token    String?   @db.VarChar(100)
+  contacts Contact[]
+  user_barang Barang[]
+  user_transaction Transaction[]
+
+
+  @@map("users")
+}
+
+model Contact {
+  id         Int       @id @default(autoincrement())
+  first_name String    @db.VarChar(100)
+  last_name  String?   @db.VarChar(100)
+  email      String?   @db.VarChar(200)
+  phone      String?   @db.VarChar(20)
+  username   String    @db.VarChar(100)
+  user       User      @relation(fields: [username], references: [username],onDelete: Cascade)
+  addresses  Address[]
+
+  @@map("contacts")
+}
+
+model Address {
+  id          Int     @id @default(autoincrement())
+  street      String? @db.VarChar(255)
+  city        String? @db.VarChar(100)
+  province    String? @db.VarChar(100)
+  country     String  @db.VarChar(100)
+  postal_code String  @db.VarChar(10)
+  contact_id  Int
+  contact     Contact @relation(fields: [contact_id], references: [id],onDelete: Cascade)
+
+  @@map("addresses")
+}
+
+model Barang {
+  id              Int      @id @default(autoincrement())
+  nama_barang     String   @db.VarChar(100)
+  jenis_barang    String   @db.VarChar(100)
+  jumlah_barang   String   @db.VarChar(255)
+  deskripsi_barang String   @db.VarChar(100)
+  harga_barang    String   @db.VarChar(255)
+  gambar_barang String            @db.VarChar(100)
+  username        String   @db.VarChar(100) 
+  user_barang            User     @relation(fields: [username], references: [username], onDelete: Cascade)
+  id_barang_transaction Transaction[]
+
+
+  @@map("barangs")
+}
+
+model Transaction{
+  id  Int @id @default(autoincrement()) //pk
+  id_barang_transaction Int @db.Int() //fk
+  username String @db.VarChar(100) //fk
+
+  user_transaction User @relation(fields: [username], references: [username])
+  id_barang Barang @relation(fields: [id_barang_transaction], references: [id])
+
+
+
+  @@map("transactions")
+}

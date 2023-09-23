@@ -1,0 +1,181 @@
+POST http://localhost:3002/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username" : "by",
+  "password" : "123",
+  "name" : "BayuPrastyo"
+}
+
+###
+
+POST http://localhost:3002/api/users/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username" : "by",
+  "password" : "123"
+}
+
+###
+
+GET http://localhost:3001/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 6e809646-57e1-4de6-a0e6-4740471d3993
+
+###
+
+GET http://localhost:3001/api/users
+Content-Type: application/json
+Accept: application/json
+
+PATCH http://localhost:3000/api/users/current
+Content-Type: application/json
+Accept: application/json
+Authorization: 1ed6002d-0c5c-4841-b5eb-0e3bd5a120fe
+
+{
+  "name" : "gg"
+}
+
+###
+
+DELETE http://localhost:3001/api/users/logout
+Content-Type: application/json
+Accept: application/json
+Authorization:  a831af9c-8fe6-4bea-b590-6e842c844da2
+
+###
+
+POST http://localhost:3002/api/barangs
+Content-Type: application/json
+Accept: application/json
+Authorization: a50f9561-0e7b-4f50-a304-99fffcc58030
+
+{
+  "nama_barang" : "Baju Gamis",
+  "jenis_barang" : "pakaian",
+  "jumlah_barang" : "100",
+  "deskripsi_barang" : "merah",
+  "harga_barang" : "1000000",
+  "gambar_barang" : "awdwakdok"
+}
+
+###
+
+GET http://localhost:3002/api/barangs
+Content-Type: application/json
+Accept: application/json
+Authorization: a50f9561-0e7b-4f50-a304-99fffcc58030
+
+###
+
+GET http://localhost:3000/api/contacts/495
+Content-Type: application/json
+Accept: application/json
+Authorization: 90ee8956-98e5-4c5e-a3ec-2248e71e5386
+
+### Update
+
+PUT http://localhost:3000/api/contacts/1898
+Content-Type: application/json
+Accept: application/json
+Authorization: 69b5b50c-8a30-4065-bed5-9d02128052ce
+
+{
+  "first_name": "dani",
+  "last_name": "aditia",
+  "email": "rully@pzn.com",
+  "phone": "324234234234"
+}
+
+### Delete Contact
+
+DELETE http://localhost:3002/api/barangs
+Content-Type: application/json
+Accept: application/json
+Authorization: a50f9561-0e7b-4f50-a304-99fffcc58030
+
+//.delete('/api/contacts/:contactId/addresses/:addressId'
+###delete Contact
+
+DELETE http://localhost:3000/api/contacts/8813
+Content-Type: application/json
+Accept: application/json
+Authorization: 20537272-fd2c-424b-9404-b270b5e8b5c5
+
+### Create Address
+
+POST http://localhost:3001/api/contacts/9502/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: d2d6b34b-1fa2-4ac6-8b73-5c7ca2684d8d
+
+{
+  "street" : "Cijambe",
+  "city" : "Bandung",
+  "province" : "Jawa Barat",
+  "country" : "Indonesia",
+  "postal_code" : "12344"
+}
+
+
+### List Addresses
+
+GET http://localhost:3001/api/contacts/8815/addresses
+Content-Type: application/json
+Accept: application/json
+Authorization: a831af9c-8fe6-4bea-b590-6e842c844da2
+
+
+### Get Address
+
+GET http://localhost:3000/api/contacts/101/addresses/14
+Content-Type: application/json
+Accept: application/json
+Authorization: e0d7ce06-1731-4c06-9af3-079ca916e4e9
+
+### Update Address
+
+PUT http://localhost:3000/api/contacts/4236/addresses/587
+Content-Type: application/json
+Accept: application/json
+Authorization: 69b5b50c-8a30-4065-bed5-9d02128052ce
+
+{
+  "street" : "Kantor Bekerja",
+  "city" : "Bekasi",
+  "province" : "Jawa Barat",
+  "country" : "Indonesia",
+  "postal_code" : "324234"
+}
+
+### Remove Address
+
+DELETE http://localhost:300/api/contacts/
+Content-Type: application/json
+Accept: application/json
+Authorization: 90ee8956-98e5-4c5e-a3ec-2248e71e5386
+###
+DELETE  http://localhost:3001/api/contacts/8815
+Content-Type: application/json
+Accept: application/json
+Authorization: d2d6b34b-1fa2-4ac6-8b73-5c7ca2684d8d
+###
+DELETE  http://localhost:3001/api/users/GG
+Content-Type: application/json
+Accept: application/json
+Authorization: b1cdc1d2-e7c4-491d-acbd-83c8156e263e
+
+###
+GET  https://0mbhgsr7-3001.asse.devtunnels.ms/api/contacts
+Content-Type: application/json
+Accept: application/json
+Authorization: b4c0fabc-6035-4f75-a65c-b41b7ae1707d
+
+
+
+
